@@ -1,0 +1,40 @@
+import java.util.*;
+
+class Solution {
+    public String frequencySort(String s) {
+
+        // Count frequency of each character
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+
+        for (char c : s.toCharArray()) {
+            if (map.containsKey(c)) {
+                map.put(c, map.get(c) + 1);
+            } else {
+                map.put(c, 1);
+            }
+        }
+
+        // Put characters into a list
+        List<Character> chars = new ArrayList<Character>(map.keySet());
+
+        // Sort by frequency - highest first
+        Collections.sort(chars, new Comparator<Character>() {
+            public int compare(Character a, Character b) {
+                return map.get(b) - map.get(a);
+            }
+        });
+
+        // Build result
+        StringBuilder result = new StringBuilder();
+
+        for (Character c : chars) {
+            int frequency = map.get(c);
+
+            for (int i = 0; i < frequency; i++) {
+                result.append(c);
+            }
+        }
+
+        return result.toString();
+    }
+}

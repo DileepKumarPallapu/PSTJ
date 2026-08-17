@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static String findDay(int month, int day, int year) {
+
+        Calendar cal = Calendar.getInstance();
+
+        // Calendar months are 0-based
+        cal.set(year, month - 1, day);
+
+        String dayName = "";
+
+        switch (cal.get(Calendar.DAY_OF_WEEK)) {
+            case Calendar.SUNDAY:
+                dayName = "SUNDAY";
+                break;
+
+            case Calendar.MONDAY:
+                dayName = "MONDAY";
+                break;
+
+            case Calendar.TUESDAY:
+                dayName = "TUESDAY";
+                break;
+
+            case Calendar.WEDNESDAY:
+                dayName = "WEDNESDAY";
+                break;
+
+            case Calendar.THURSDAY:
+                dayName = "THURSDAY";
+                break;
+
+            case Calendar.FRIDAY:
+                dayName = "FRIDAY";
+                break;
+
+            case Calendar.SATURDAY:
+                dayName = "SATURDAY";
+                break;
+        }
+
+        return dayName;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int month = in.nextInt();
+        int day = in.nextInt();
+        int year = in.nextInt();
+
+        System.out.println(findDay(month, day, year));
+
+        in.close();
+    }
+}
